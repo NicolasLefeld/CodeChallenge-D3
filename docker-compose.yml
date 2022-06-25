@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: api
+    container_name: api
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - NODE_ENV=$NODE_ENV
+      - PORT=$PORT
+      - POSTGRES_URL=$POSTGRES_URL
+    ports:
+      - "8000:8000"
